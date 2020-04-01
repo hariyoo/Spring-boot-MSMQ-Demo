@@ -77,7 +77,7 @@
 ```yaml
 msmq:
   queue:
-	# 格式为:direct=tcp:{ip}\private$\{队列名}
+#   格式为:direct=tcp:{ip}\private$\{队列名}
     url: direct=tcp:172.26.1.131\private$\test
 
 ```
