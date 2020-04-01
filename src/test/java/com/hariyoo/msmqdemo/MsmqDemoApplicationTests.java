@@ -24,13 +24,12 @@ class MsmqDemoApplicationTests {
 			Queue sendQueue = MsmqQueue.getInstance();
 			String label = "test_send";
 			String correlationId = "0";
+			// 消息主体，你要发送的正文应该放在body里
 			String body = "MSMQ真特么好用...!!??";
 			Message msg= new Message(body, label, correlationId);
 			sendQueue.send(msg);
 			log.info("发送完成");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (MessageQueueException e) {
+		} catch (UnsupportedEncodingException | MessageQueueException e) {
 			e.printStackTrace();
 		}
 	}
@@ -42,9 +41,7 @@ class MsmqDemoApplicationTests {
 			Message message = queue.receive();
 			String body = message.getBodyAsString();
 			log.info("消息内容 -> {}", body);
-		} catch (MessageQueueException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
+		} catch (MessageQueueException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 	}
